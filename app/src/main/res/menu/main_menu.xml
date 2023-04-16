@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/send_all"
+        android:icon="@drawable/upload"
+        android:orderInCategory="100"
+        app:showAsAction="always"
+        android:title="Odeslat dotazníky"
+        />
+
+    <item android:id="@+id/upload_db"
+        android:icon="@drawable/database"
+        android:orderInCategory="100"
+        app:showAsAction="always"
+        android:title="Odeslat databázi"
+        />
+</menu>
