@@ -73,14 +73,15 @@ class MainActivity : baseActivity() {
         })
 
         countingTimer.setOnClickListener(View.OnClickListener {
-            var lastCount = carCountDao.getLast()
-            if(lastCount != null){
-                if(getMinutesDiff(lastCount.getCountedAtDate()) > 59){
-                    openTimerModal()
-                }
-            }else{
-                openTimerModal()
-            }
+            openTimerModal()
+//            var lastCount = carCountDao.getLast()
+//            if(lastCount != null){
+//                if(getMinutesDiff(lastCount.getCountedAtDate()) > 59){
+//                    openTimerModal()
+//                }
+//            }else{
+//                openTimerModal()
+//            }
         })
 
         addCar.setOnClickListener(View.OnClickListener {

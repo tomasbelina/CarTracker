@@ -32,7 +32,7 @@ import java.util.Date
 
 
 class carRow:ConstraintLayout {
-
+    lateinit var toast: Toast
     var licensePlateTv:TextView
     var descriptionTv:TextView
     var lidlBtn: Button
@@ -93,7 +93,9 @@ class carRow:ConstraintLayout {
         })
 
         goOut.setOnClickListener(OnClickListener {
-            if(getMinutesDiff(carObject.getparketAtDate()) < 90){
+            if (!carObject.lidl && !carObject.outside){
+                createToast("Musíte zvolit alespoň jednu možnost Lidl/Pryč.")
+            } else if(getMinutesDiff(carObject.getparketAtDate()) < 90){
                 carObject.leftAt = carObject.getNow()
                 carDao.update(carObject)
                deleteAndSend()
@@ -211,5 +213,13 @@ class carRow:ConstraintLayout {
                     }
                 }
             })
+    }
+
+    fun createToast(text : String, color : String = "gray"){
+        toast = Toast.makeText(this.context,
+            HtmlCompat.fromHtml("<font color='$color'>$text</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+            Toast.LENGTH_LONG)
+        toast.setGravity(Gravity.CENTER,0,0)
+        toast.show()
     }
 }
